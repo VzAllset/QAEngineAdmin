@@ -1,0 +1,17 @@
+org\lightadmin\demo\config\QaStepConfiguration.class
+org\lightadmin\demo\config\DashboardConfiguration.class
+org\lightadmin\demo\config\ApplicationConfiguration.class
+org\lightadmin\demo\config\QaDataConfiguration.class
+org\lightadmin\demo\config\QaFailureConfigurator.class
+org\lightadmin\demo\config\QaObjectConfiguration.class
+org\lightadmin\demo\model\QaStep.class
+org\lightadmin\demo\config\QaDepDataConfigurator.class
+org\lightadmin\demo\model\QaObject.class
+org\lightadmin\demo\model\QaDepDataId.class
+org\lightadmin\demo\config\DraftEntityConfiguration.class
+org\lightadmin\demo\model\QaFailure.class
+org\lightadmin\demo\model\QaDepData.class
+org\lightadmin\demo\model\QaFlow.class
+org\lightadmin\demo\model\Application.class
+org\lightadmin\demo\config\FlowConfigurator.class
+org\lightadmin\demo\model\QaData.class
