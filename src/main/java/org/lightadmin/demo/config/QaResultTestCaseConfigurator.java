@@ -10,70 +10,73 @@ import org.lightadmin.api.config.unit.EntityMetadataConfigurationUnit;
 import org.lightadmin.api.config.unit.FieldSetConfigurationUnit;
 import org.lightadmin.api.config.unit.FiltersConfigurationUnit;
 import org.lightadmin.api.config.unit.ScreenContextConfigurationUnit;
-import org.lightadmin.api.config.utils.FieldValueRenderer;
-import org.lightadmin.demo.model.QaFailure;
+import org.lightadmin.demo.model.QaResultTestCase;
 
-public class QaFailureConfigurator extends AdministrationConfiguration<QaFailure>
+public class QaResultTestCaseConfigurator extends AdministrationConfiguration<QaResultTestCase>
 {
 	public EntityMetadataConfigurationUnit configuration(EntityMetadataConfigurationUnitBuilder configurationBuilder) {
         return configurationBuilder
                 .nameField("name")
-                .singularName("QaFailure")
-                .pluralName("QaFailure").build();
+                .singularName("Result-TestCase Map")
+                .pluralName("Result-TestCase Map").build();
     }
 
     public ScreenContextConfigurationUnit screenContext(ScreenContextConfigurationUnitBuilder screenContextBuilder) {
-        return screenContextBuilder.screenName("QA Failure Administration").build();
+        return screenContextBuilder.screenName("Qa Result to Test Case Map Administration").build();
     }
 
     public FieldSetConfigurationUnit listView(FieldSetConfigurationUnitBuilder fragmentBuilder) {
         return fragmentBuilder
+        		.field("resultTestCaseId").caption("Result Id")
+        		.dynamic("qaFlow.flowDesc").caption("Flow")
+        		.dynamic("qaStep.stepName").caption("Step")
+        		.dynamic("qaTestCase.testCaseName").caption("Test Case")
         		.field("threadId").caption("Thread Id")
-        		.renderable(errorLogRenderer()).caption("Error Log")
-        		.field("screenshot").caption("Screenshot")
-        		.field("createdDt").caption("Date")
+        		.field("status").caption("Status")
                 .build();
     }
 
     public FieldSetConfigurationUnit quickView(FieldSetConfigurationUnitBuilder fragmentBuilder) {
         return fragmentBuilder
+        		.field("resultTestCaseId").caption("Result Id")
+        		.field("qaFlow").caption("Flow")
+        		.field("qaStep").caption("Step")
+        		.field("qaTestCase").caption("Test Case")
         		.field("threadId").caption("Thread Id")
-        		.field("errorLog").caption("Error Log")
-        		.field("screenshot").caption("Screenshot")
-        		.field("createdDt").caption("Date")
+        		.field("status").caption("Status")
                 .build();
     }
 
     public FieldSetConfigurationUnit showView(final FieldSetConfigurationUnitBuilder fragmentBuilder) {
         return fragmentBuilder
+        		.field("resultTestCaseId").caption("Result Id")
+        		.field("qaFlow").caption("Flow")
+        		.field("qaStep").caption("Step")
+        		.field("qaTestCase").caption("Test Case")
         		.field("threadId").caption("Thread Id")
-        		.field("errorLog").caption("Error Log")
-        		.field("screenshot").caption("Screenshot")
-        		.field("createdDt").caption("Date")
+        		.field("status").caption("Status")
                 .build();
     }
 
     public FieldSetConfigurationUnit formView(final PersistentFieldSetConfigurationUnitBuilder fragmentBuilder) {
         return fragmentBuilder
+        		.field("resultTestCaseId").caption("Result Id")
+        		.field("qaFlow").caption("Flow")
+        		.field("qaStep").caption("Step")
+        		.field("qaTestCase").caption("Test Case")
         		.field("threadId").caption("Thread Id")
-        		.field("errorLog").caption("Error Log")
-        		.field("screenshot").caption("Screenshot")
-        		.field("createdDt").caption("Date")
+        		.field("status").caption("Status")
                 .build();
     }
 
     public FiltersConfigurationUnit filters(final FiltersConfigurationUnitBuilder filterBuilder) {
         return filterBuilder
+        		.filter("Result Id","resultTestCaseId")
+        		.filter("Flow","qaFlow")
+        		.filter("Step","qaStep")
+        		.filter("Test Case","qaTestCase")
         		.filter("Thread Id","threadId")
+        		.filter("Status","status")
         		.build();
-    }
-    
-    public static FieldValueRenderer<QaFailure> errorLogRenderer() {
-        return new FieldValueRenderer<QaFailure>() {
-            @Override
-            public String apply( final QaFailure qaFailure ) {
-                return qaFailure.getErrorLog().substring(0,100) ;
-            }
-        };
     }
 }

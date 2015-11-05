@@ -11,5 +11,14 @@
 		<class>org.lightadmin.demo.model.QaFlow</class>
 		<class>org.lightadmin.demo.model.QaDepData</class>
 		<class>org.lightadmin.demo.model.QaFailure</class>
+		<class>org.lightadmin.demo.model.QaFlowStepMapId</class>
+		<class>org.lightadmin.demo.model.QaFlowStepMap</class>
+		<class>org.lightadmin.demo.model.QaTestResult</class>
+		<class>org.lightadmin.demo.model.QaFlowTestMap</class>
+		<class>org.lightadmin.demo.model.QaTestCase</class>
+		<class>org.lightadmin.demo.model.QaResultTestCase</class>
+		<class>org.lightadmin.demo.model.QaTestSuite</class>
+		<class>org.lightadmin.demo.model.QaTestSuiteTestCaseMap</class>
+		<class>org.lightadmin.demo.model.QaTestCaseFlowMap</class>
 	</persistence-unit>
 </persistence>

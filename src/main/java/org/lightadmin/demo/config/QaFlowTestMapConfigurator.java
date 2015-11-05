@@ -10,70 +10,67 @@ import org.lightadmin.api.config.unit.EntityMetadataConfigurationUnit;
 import org.lightadmin.api.config.unit.FieldSetConfigurationUnit;
 import org.lightadmin.api.config.unit.FiltersConfigurationUnit;
 import org.lightadmin.api.config.unit.ScreenContextConfigurationUnit;
-import org.lightadmin.api.config.utils.FieldValueRenderer;
-import org.lightadmin.demo.model.QaFailure;
+import org.lightadmin.demo.model.QaFlowTestMap;
 
-public class QaFailureConfigurator extends AdministrationConfiguration<QaFailure>
+public class QaFlowTestMapConfigurator extends AdministrationConfiguration<QaFlowTestMap>
 {
 	public EntityMetadataConfigurationUnit configuration(EntityMetadataConfigurationUnitBuilder configurationBuilder) {
         return configurationBuilder
                 .nameField("name")
-                .singularName("QaFailure")
-                .pluralName("QaFailure").build();
+                .singularName("Qa Flow Test Map")
+                .pluralName("Qa Flow Test Map").build();
     }
 
     public ScreenContextConfigurationUnit screenContext(ScreenContextConfigurationUnitBuilder screenContextBuilder) {
-        return screenContextBuilder.screenName("QA Failure Administration").build();
+        return screenContextBuilder.screenName("QA Flow to Test Map Administration").build();
     }
 
     public FieldSetConfigurationUnit listView(FieldSetConfigurationUnitBuilder fragmentBuilder) {
         return fragmentBuilder
-        		.field("threadId").caption("Thread Id")
-        		.renderable(errorLogRenderer()).caption("Error Log")
-        		.field("screenshot").caption("Screenshot")
-        		.field("createdDt").caption("Date")
+        		.field("flowTestMapId").caption("Flow Test Map Id")
+        		.dynamic("qaFlow.flowDesc").caption("Flow")
+        		.dynamic("qaTestResult.testDescription").caption("Qa Test Result")
+        		.field("mappingDescription").caption("Mapping Description")
+        		.field("createDt").caption("Created Date")
                 .build();
     }
 
     public FieldSetConfigurationUnit quickView(FieldSetConfigurationUnitBuilder fragmentBuilder) {
         return fragmentBuilder
-        		.field("threadId").caption("Thread Id")
-        		.field("errorLog").caption("Error Log")
-        		.field("screenshot").caption("Screenshot")
-        		.field("createdDt").caption("Date")
+        		.field("flowTestMapId").caption("Flow Test Map Id")
+        		.field("qaFlow").caption("Flow")
+        		.field("qaTestResult").caption("Qa Test Result")
+        		.field("mappingDescription").caption("Mapping Description")
+        		.field("createDt").caption("Created Date")
                 .build();
     }
 
     public FieldSetConfigurationUnit showView(final FieldSetConfigurationUnitBuilder fragmentBuilder) {
         return fragmentBuilder
-        		.field("threadId").caption("Thread Id")
-        		.field("errorLog").caption("Error Log")
-        		.field("screenshot").caption("Screenshot")
-        		.field("createdDt").caption("Date")
+        		.field("flowTestMapId").caption("Flow Test Map Id")
+        		.field("qaFlow").caption("Flow")
+        		.field("qaTestResult").caption("Qa Test Result")
+        		.field("mappingDescription").caption("Mapping Description")
+        		.field("createDt").caption("Created Date")
                 .build();
     }
 
     public FieldSetConfigurationUnit formView(final PersistentFieldSetConfigurationUnitBuilder fragmentBuilder) {
         return fragmentBuilder
-        		.field("threadId").caption("Thread Id")
-        		.field("errorLog").caption("Error Log")
-        		.field("screenshot").caption("Screenshot")
-        		.field("createdDt").caption("Date")
+        		.field("flowTestMapId").caption("Flow Test Map Id")
+        		.field("qaFlow").caption("Flow")
+        		.field("qaTestResult").caption("Qa Test Result")
+        		.field("mappingDescription").caption("Mapping Description")
+        		.field("createDt").caption("Created Date")
                 .build();
     }
 
     public FiltersConfigurationUnit filters(final FiltersConfigurationUnitBuilder filterBuilder) {
         return filterBuilder
-        		.filter("Thread Id","threadId")
+        		.filter("Flow Test Map Id","flowTestMapId")
+        		.filter("Flow","qaFlow")
+        		.filter("Qa Test Result","qaTestResult")
+        		.filter("Mapping Description","mappingDescription")
         		.build();
-    }
-    
-    public static FieldValueRenderer<QaFailure> errorLogRenderer() {
-        return new FieldValueRenderer<QaFailure>() {
-            @Override
-            public String apply( final QaFailure qaFailure ) {
-                return qaFailure.getErrorLog().substring(0,100) ;
-            }
-        };
     }
 }
